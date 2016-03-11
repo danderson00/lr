@@ -1,0 +1,18 @@
+{
+  "autoIncrement": false,
+  "get": {
+    "access": "disabled"
+  },
+  "post": {
+    "access": "authenticated"
+  },
+  "put": {
+    "access": "disabled"
+  },
+  "patch": {
+    "access": "disabled"
+  },
+  "delete": {
+    "access": "disabled"
+  }
+}
