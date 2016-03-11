@@ -1,0 +1,18 @@
+{
+  "autoIncrement": false,
+  "insert": {
+    "access": "authenticated"
+  },
+  "undelete": {
+    "access": "authenticated"
+  },
+  "read": {
+    "access": "disabled"
+  },
+  "update": {
+    "access": "disabled"
+  },
+  "delete": {
+    "access": "disabled"
+  }
+}
