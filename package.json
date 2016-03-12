@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "scaffolded-mobile-app",
     "version": "0.0.1",
     "description": "An Azure Mobile App scaffolded with the compatibility tool",
@@ -7,4 +8,15 @@
         "azure-mobile-apps-compatibility": "^0.0.1",
         "express": "^4.13.4"
     }
+=======
+  "name": "scaffolded-mobile-app",
+  "version": "0.0.1",
+  "description": "An Azure Mobile App scaffolded with the compatibility tool",
+  "dependencies": {
+    "azure": "^0.10.6",
+    "azure-mobile-apps": "Azure/azure-mobile-apps-node",
+    "azure-mobile-apps-compatibility": "danderson00/azure-mobile-apps-node.compatibility",
+    "express": "^4.13.4"
+  }
+>>>>>>> 217e57705a21effe990b8d6460ff0f2b61250059
 }
