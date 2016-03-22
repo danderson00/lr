@@ -1,5 +1,5 @@
 var app = require('express')(),
-    mobileApp = require('azure-mobile-apps')({ skipVersionCheck: true, data: { dynamicSchema: false }, auth: { secret: 'secret' } })
+    mobileApp = require('azure-mobile-apps')({ skipVersionCheck: true, data: { dynamicSchema: true }, auth: { secret: 'secret' } })
 
 mobileApp.tables.import('tables')
 mobileApp.api.import('api')
