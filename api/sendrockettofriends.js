@@ -2,14 +2,14 @@ var wrap = require('azure-mobile-apps-compatibility').wrap;
 
 module.exports = wrap.api(function (exports, statusCodes) {
 exports.post = function(request, response) {
-    
+
     var postValues = request.body;
     if (postValues.members != null)
       postValues = postValues.members;
-    
+
     var recipients = JSON.parse(postValues.recipients);
     var azure = require('azure');
-    var notificationHubService = azure.createNotificationHubService(process.env.NOTIFICATION_HUB_NAME, process.env.NOTIFICATION_HUB_FULL_ACCESS_SIGNATURE);    
+    var notificationHubService = azure.createNotificationHubService(process.env.NOTIFICATION_HUB_NAME, process.env.NOTIFICATION_HUB_FULL_ACCESS_SIGNATURE);
     var messagesTable = request.service.tables.getTable('Messages');
     var savedMessagesCount = 0;
     for (var i = 0; i < recipients.length; i++) {
@@ -31,7 +31,7 @@ exports.post = function(request, response) {
                  //Don't push to to the user sending the message
                  if (newMessage.fromUserId !== newMessage.toUserId) {
                      var payload = '{ "message" : "You\'ve received a new rocket!", "collapse_key" : "NEWROCKET" }';
-                     notificationHubService.send(newMessage.toUserId, payload, 
+                     notificationHubService.send(newMessage.toUserId, payload,
                          function(error, outcome) {
                              console.log('issue sending push');
                              console.log('error: ', error);
@@ -45,13 +45,13 @@ exports.post = function(request, response) {
                      var mssql = request.service.mssql;
                      mssql.queryRaw(sql, [postValues.rocketFileId, postValues.originalSentRocketId, request.user.userId], {
                       	success: function(results) {
-                             response.send(200, { Status : "Success", 
+                             response.send(200, { Status : "Success",
                                                   UpdatedId: postValues.originalSentRocketId,
-                                                  Details: "Rockets sent and original updated" 
+                                                  Details: "Rockets sent and original updated"
                                                  });
                          }, error: function(error) {
                              console.error("Couldn't update original message: ", error);
-                             response.send(200, { Status : "FAIL", Error : "Sorry!  Couldn't update original message as sent"});            
+                             response.send(200, { Status : "FAIL", Error : "Sorry!  Couldn't update original message as sent"});
                          }
                      });
                  }
@@ -60,9 +60,9 @@ exports.post = function(request, response) {
                  response.send(200, { Status: "FAIL", Error: "There was an issue sending messages to recipients."});
              }
          });
-        
-    }     
-    response.send(200, { Status : "SUCCESS"});
+
+    }
+    //response.send(200, { Status : "SUCCESS"});
 };
 
 })

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "An Azure Mobile App scaffolded with the compatibility tool",
   "dependencies": {
-    "azure": "^0.10.6",
+    "azure": "^0.6.9-zumo",
     "azure-mobile-apps": "Azure/azure-mobile-apps-node",
     "azure-mobile-apps-compatibility": "danderson00/azure-mobile-apps-node.compatibility",
     "express": "^4.13.4"
